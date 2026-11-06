@@ -1,6 +1,5 @@
 const pool = require('../config/db');
 
-// trae la venta con el nombre del vendedor y del producto
 const SELECT_VENTAS = `
   SELECT v.id_venta, v.id_vendedor, v.id_producto, v.cantidad, v.total,
          TO_CHAR(v.fecha, 'YYYY-MM-DD') AS fecha,
@@ -91,7 +90,6 @@ const Venta = {
       const res = await client.query('DELETE FROM venta WHERE id_venta = $1 RETURNING *', [id]);
       const venta = res.rows[0];
       if (venta) {
-        // al borrar la venta se regresa el stock
         await client.query('UPDATE producto SET stock = stock + $1 WHERE id_producto = $2', [venta.cantidad, venta.id_producto]);
       }
       await client.query('COMMIT');

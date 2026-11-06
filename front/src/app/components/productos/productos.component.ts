@@ -53,7 +53,6 @@ export class ProductosComponent implements OnInit {
   }
 
   editar(p: Producto) {
-    // el precio llega como texto desde postgres
     this.producto = { ...p, precio: Number(p.precio) };
     this.editando = true;
   }

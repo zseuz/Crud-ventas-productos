@@ -36,7 +36,6 @@ export class VentasComponent implements OnInit {
 
   nueva(): Venta {
     const d = new Date();
-    // fecha local en formato yyyy-mm-dd para el input date
     const hoy = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
     return { id_vendedor: null, id_producto: null, cantidad: 1, fecha: hoy };
   }
@@ -46,11 +45,9 @@ export class VentasComponent implements OnInit {
       next: (data) => this.ventas = data,
       error: () => this.error = 'No se pudo conectar con el servidor'
     });
-    // los productos se recargan para ver el stock actualizado
     this.productoService.listar().subscribe(data => this.productos = data);
   }
 
-  // total aproximado para mostrar en el formulario, el real lo calcula el back
   get totalCalculado(): number {
     const prod = this.productos.find(p => p.id_producto == this.venta.id_producto);
     return prod ? Number(prod.precio) * this.venta.cantidad : 0;

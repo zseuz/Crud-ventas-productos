@@ -5,7 +5,6 @@ export interface Venta {
   cantidad: number;
   total?: number;
   fecha: string;
-  // estos dos vienen del join en el back
   vendedor?: string;
   producto?: string;
 }

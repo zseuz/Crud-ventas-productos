@@ -59,7 +59,6 @@ const eliminar = async (req, res) => {
     if (!filas) return res.status(404).json({ mensaje: 'Vendedor no encontrado' });
     res.json({ mensaje: 'Vendedor eliminado' });
   } catch (error) {
-    // 23503 = tiene ventas asociadas (llave foranea)
     if (error.code === '23503') return res.status(400).json({ mensaje: 'No se puede eliminar, el vendedor tiene ventas' });
     res.status(500).json({ mensaje: 'Error al eliminar el vendedor', error: error.message });
   }
