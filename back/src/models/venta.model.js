@@ -60,7 +60,6 @@ const Venta = {
         return null;
       }
 
-      // primero se devuelve lo que se habia vendido y despues se descuenta lo nuevo
       await client.query('UPDATE producto SET stock = stock + $1 WHERE id_producto = $2', [anterior.cantidad, anterior.id_producto]);
 
       const producto = (await client.query('SELECT * FROM producto WHERE id_producto = $1 FOR UPDATE', [id_producto])).rows[0];
