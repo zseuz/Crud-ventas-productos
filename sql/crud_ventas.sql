@@ -1,7 +1,14 @@
--- Script completo: tablas + datos.
--- Antes crear la base con: CREATE DATABASE crud_ventas;
--- y ejecutar esto conectado a crud_ventas (sirve en pgAdmin o psql)
+-- Base de datos del CRUD de ventas
+--
+-- En pgAdmin: ejecutar primero el CREATE DATABASE, luego abrir el Query Tool
+-- en la base crud_ventas y ejecutar desde "Tablas" hacia abajo.
+-- En psql se puede correr todo de una: psql -U postgres -f crud_ventas.sql
 
+CREATE DATABASE crud_ventas;
+
+\c crud_ventas
+
+-- Tablas
 DROP TABLE IF EXISTS venta;
 DROP TABLE IF EXISTS producto;
 DROP TABLE IF EXISTS vendedor;
@@ -56,7 +63,3 @@ INSERT INTO venta (id_vendedor, id_producto, cantidad, total, fecha) VALUES
 (3, 3, 1,  180000, '2026-10-12'),
 (4, 4, 5,  300000, '2026-10-20'),
 (5, 5, 2,  300000, '2026-10-28');
-
-SELECT * FROM vendedor;
-SELECT * FROM producto;
-SELECT * FROM venta;

@@ -17,7 +17,7 @@ La idea es sencilla: se registran vendedores y productos, y luego se hacen venta
 CRUD/
 ├── back/        API en Node (routes, controllers, models)
 ├── front/       Aplicación en Angular
-├── sql/         Scripts de la base de datos
+├── sql/         Script de la base de datos
 └── diagrama/    Diagrama de las tablas
 ```
 
@@ -45,13 +45,15 @@ Necesitas tener instalado Node.js (versión 18 o mayor) y PostgreSQL.
 
 ### 1. Crear la base de datos
 
-En pgAdmin o en la consola, ejecutar los scripts de la carpeta `sql` en este orden:
+Todo está en `sql/crud_ventas.sql`: crea la base `crud_ventas`, las tablas y los datos de prueba.
 
-1. `01_crear_base.sql` → crea la base `crud_ventas`
-2. `02_crear_tablas.sql` → crea las tablas (conectado a `crud_ventas`)
-3. `03_insertar_datos.sql` → inserta los datos
+Desde la consola:
 
-También está `script_completo.sql` que tiene las tablas y los datos juntos, por si se quiere correr todo de una vez.
+```
+psql -U postgres -f sql/crud_ventas.sql
+```
+
+En pgAdmin: primero ejecutar la línea `CREATE DATABASE crud_ventas;`, después abrir el Query Tool sobre la base `crud_ventas` y ejecutar el resto del archivo (la línea `\c crud_ventas` es solo para psql, en pgAdmin se puede quitar).
 
 ### 2. Levantar el back
 
