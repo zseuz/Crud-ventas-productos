@@ -18,7 +18,7 @@ CRUD/
 ├── back/        API en Node (routes, controllers, models)
 ├── front/       Aplicación en Angular
 ├── sql/         Scripts de la base de datos
-└── diagrama/    Diagrama de las tablas y del flujo
+└── diagrama/    Diagrama de las tablas
 ```
 
 En el back usé el patrón MVC:
@@ -35,7 +35,7 @@ Son tres tablas:
 - **producto**: id_producto (PK), nombre, descripcion, precio, stock
 - **venta**: id_venta (PK), id_vendedor (FK), id_producto (FK), cantidad, total, fecha
 
-Un vendedor puede tener muchas ventas y un producto puede estar en muchas ventas. El diagrama está en la carpeta `diagrama`.
+Un vendedor puede tener muchas ventas y un producto puede estar en muchas ventas. El diagrama está en `diagrama/diagrama.png`.
 
 Cada tabla tiene 5 registros de prueba.
 
